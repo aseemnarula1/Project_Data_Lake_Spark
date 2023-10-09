@@ -54,4 +54,17 @@ Below are steps you can follow to complete each component of this project.
 3. Processing Log Data Module
 4. Writing the output of the each fact and dimension tables into the parquet files
 
+**Note** — Since the volume of the dataset is high in the songs data set, I have filtered the dataset when being pulled from the filtered by use of the sub-folder inside the S3 bucket.
+e.g. /song-data/song_data/A/A/*/
+
+**GitHub Link** — https://github.com/aseemnarula1/Project_Data_Lake_Spark
+
+**Medium Blog** - https://aseemnarula.medium.com/udacity-data-engineer-nanodegree-project-data-lake-89049f64112f
+
+**Acknowledgement**
+
+All the datasets of Sparkify used in this Data Engineer Project are provided through Udacity and are used for my project with Udacity Data Engineer Nanodegree and reference links are also provided where the docs are referred.
+
+
+
 
