@@ -45,7 +45,7 @@ The log files in the dataset you’ll be working with are partitioned by year an
 log_data/2018/11/2018-11-12-events.json
 log_data/2018/11/2018-11-13-events.json
 
-Project Steps
+**Project Steps**
 
 Below are steps you can follow to complete each component of this project.
 
@@ -60,6 +60,15 @@ e.g. /song-data/song_data/A/A/*/
 **GitHub Link** — https://github.com/aseemnarula1/Project_Data_Lake_Spark
 
 **Medium Blog** - https://aseemnarula.medium.com/udacity-data-engineer-nanodegree-project-data-lake-89049f64112f
+
+**Reference Links** —
+
+1. Spark Partition By — https://www.educba.com/pyspark-partitionby/
+2. Parquet Write File — https://sparkbyexamples.com/pyspark/pyspark-read-and-write-parquet-file/
+3. Spark Show command — https://sparkbyexamples.com/pyspark/pyspark-show-display-dataframe-contents-in-table/
+4. Spark Session — https://sparkbyexamples.com/pyspark/pyspark-what-is-sparksession/
+5. Spark Timestamp — https://sparkbyexamples.com/spark/pyspark-to_timestamp-convert-string-to-timestamp-type/
+6. Spark Stack Overflow — https://stackoverflow.com/questions/39088473/pyspark-dataframe-convert-unusual-string-format-to-timestamp
 
 **Acknowledgement**
 
