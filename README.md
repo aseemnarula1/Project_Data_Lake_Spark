@@ -49,74 +49,9 @@ Project Steps
 
 Below are steps you can follow to complete each component of this project.
 
-Creation of the Spark Session
-Processing Song Data Module
-Processing Log Data Module
-Writing the output of the each fact and dimension tables into the parquet files
-Now, lets deep dive into each of the project steps
-
 1. Creation of the Spark Session
-
-This module creates the Hadoop Spark Session for the python modules.
-
-def create_spark_session():
-    spark = SparkSession \
-        .builder \
-        .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:2.7.0") \
-        .getOrCreate()
-    return spark
-
-spark = create_spark_session()
 2. Processing Song Data Module
-
-In this module, the Song Data is read from the json file and read it via read.json in-build function, followed by extracting the required columns to create the “songs_table” dataframe.
-
-# Getting filepath to song data file
- song_data = input_data + "/song-data/song_data/A/A/*/"
-# Reading song data file
- df = spark.read.json(song_data)
-# Extracting columns to create songs table with distinct
- songs_table = df.select(["song_id", "title", "artist_id", "year", "duration"]).distinct()
-Finally, writing the data frame to the output parquet file.
-
-# Writing songs table to parquet files partitioned by year and artist
- songs_table.write.parquet(os.path.join(output_data, 'songs/songs.parquet'), partitionBy=['year', 'artist_id'], mode='overwrite')
-Similarly, from the artist table, the output artist parquet file is also generated in the similar pattern.
-
- # Extracting columns to create artists table
- artists_table =  artists_table = df['artist_id', 'artist_name', 'artist_location', 'artist_latitude', 'artist_longitude']
-    
- # Dropping duplicates from the artists table
- artists_table = artists_table.drop_duplicates(subset=['artist_id'])
-    
- # Writing artists table to parquet files
- artists_table.write.parquet(os.path.join(output_data, 'artists/artists.parquet'), mode='overwrite')
 3. Processing Log Data Module
-
-In this module the remaining 3 tables will be populated, users_table, time_table and songplays_table, followed by the writing the output for each of them into the parquet file format.
-
-# Getting filepath to log data file
-log_data = input_data + "/log-data/"
-
-# Reading log data file
-log_data_df = spark.read.json(log_data)
-    
-# Filtering by actions for song plays
-log_data_df = log_data_df.where('page="NextSong"')
-
-# Extracting columns for users table    
-users_table = log_data_df['userId', 'firstName', 'lastName', 'gender', 'level']
-    
-# Removing duplicates from the users tables
-users_table = users_table.drop_duplicates(subset=['userId'])    
 4. Writing the output of the each fact and dimension tables into the parquet files
 
-# Writing the users table to parquet files
-users_table.write.parquet(os.path.join(output_data, 'users/users.parquet'), mode='overwrite')
-
-# Writing time table to parquet files partitioned by year and month
-time_table.write.parquet(os.path.join(output_data, 'time/time.parquet'), partitionBy=['year', 'month'], mode='overwrite')
-
-# Writing songplays table to parquet files partitioned by year and month
-songplays_table.write.parquet(os.path.join(output_data, 'songplays/songplays.parquet'), partit
 
